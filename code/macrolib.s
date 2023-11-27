@@ -68,11 +68,12 @@ int_to_string:
 convert_loop:
     # Amount of unique symbols less than 100, so we don't need to do loop for converting int to char.
 	div t1 %x t0
+	beqz t1 second
 	addi t1 t1 48
 	sb   t1, 0(%y)
 	
 	addi %y, %y, 1
-	
+second:	
 	rem t1 %x t0
 	addi t1 t1 48
 	sb   t1, 0(%y)
